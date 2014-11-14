@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">USA Survival App</string>
+    <string name="title_store">Store</string>
+    <string name="title_ontheroad">On the Road</string>
+    <string name="title_restaurant">Restaurant</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
