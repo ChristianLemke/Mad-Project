@@ -1,10 +1,13 @@
 package com.example.usasurvivalapp;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class OnTheRoadFragment extends Fragment {
 	/**
@@ -33,6 +36,28 @@ public class OnTheRoadFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_ontheroad, container,
 				false);
+		
+		// Set up view
+		Button button =(Button)rootView.findViewById(R.id.button_find_gas_stations);
+		button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				startFindCheapGasActivity();
+			}
+		});
+		
 		return rootView;
+	}
+	
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onViewCreated(view, savedInstanceState);
+	}
+	
+	public void startFindCheapGasActivity() {
+		Intent intent = new Intent(getActivity(), FindGasStationActivity.class);
+		startActivity(intent);
 	}
 }
