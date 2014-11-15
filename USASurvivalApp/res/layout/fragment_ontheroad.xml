@@ -8,10 +8,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.usasurvivalapp.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/section_label"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="on the road" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on the road" />
+
+        <Button
+            android:id="@+id/button_find_gas_stations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="find cheap gas" />
+    </LinearLayout>
 
 </RelativeLayout>
