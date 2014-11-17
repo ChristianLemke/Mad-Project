@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name="FindGasStationActivity"></activity>
+        <activity android:name="CurrencyActivity"></activity>
+         <activity android:name="MeasureActivity"></activity>
+         <activity android:name="SizeActivity"></activity>
     </application>
 
 </manifest>
