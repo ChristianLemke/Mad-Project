@@ -14,4 +14,155 @@
         android:layout_height="wrap_content"
         android:text="restaurant" />
 
+    <TextView
+        android:id="@+id/text_euro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/input_restaurant"
+        android:layout_marginBottom="14dp"
+        android:text="€"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_dollar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/input_restaurant"
+        android:layout_alignLeft="@+id/section_label"
+        android:text="$"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tips_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_total"
+        android:layout_alignLeft="@+id/input_customtip"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="22dp"
+        android:text="0.00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tips_value"
+        android:layout_below="@+id/tips_value"
+        android:text="0.00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/text_dollar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/total_value"
+        android:layout_alignBottom="@+id/total_value"
+        android:layout_alignLeft="@+id/text_dollar1"
+        android:text="$"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/text_dollar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tips_value"
+        android:layout_alignBottom="@+id/tips_value"
+        android:layout_alignLeft="@+id/text_dollar3"
+        android:text="$"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/text_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tips_value"
+        android:layout_alignBottom="@+id/tips_value"
+        android:layout_alignLeft="@+id/text_total"
+        android:text="tips"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/input_customtip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroup_tips"
+        android:layout_alignRight="@+id/text_tips"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0" >
+
+        <requestFocus />
+    </EditText>
+
+    <RadioGroup
+        android:id="@+id/radioGroup_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_restaurant"
+        android:layout_toLeftOf="@+id/total_value" >
+
+        <RadioButton
+            android:id="@+id/radio_tip15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_restaurant"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/text_dollar3"
+            android:text="15%" />
+
+        <RadioButton
+            android:id="@+id/radio_tip18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radio_tip15"
+            android:layout_below="@+id/radio_tip15"
+            android:layout_marginTop="15dp"
+            android:text="18%" />
+
+        <RadioButton
+            android:id="@+id/radio_tip20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="20%" />
+
+        <RadioButton
+            android:id="@+id/radio_customTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/input_restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/section_label"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/section_label"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/euro_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/text_euro"
+        android:layout_alignBottom="@+id/text_euro"
+        android:layout_alignRight="@+id/total_value"
+        android:text="0.00"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_euro"
+        android:layout_marginBottom="15dp"
+        android:layout_toLeftOf="@+id/text_euro"
+        android:text="total"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
