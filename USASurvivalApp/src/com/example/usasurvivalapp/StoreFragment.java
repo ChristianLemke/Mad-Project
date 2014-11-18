@@ -52,7 +52,7 @@ public class StoreFragment extends Fragment {
 				false);
 		
 		btn_currency = (Button) rootView.findViewById(R.id.btn_currency);
-		btn_sizes = (Button) rootView.findViewById(R.id.btn_size);
+		btn_sizes = (Button) rootView.findViewById(R.id.btn_sizes);
 		btn_measure = (Button) rootView.findViewById(R.id.btn_measure);
 		
 		btn_currency.setOnClickListener(new OnClickListener(){
