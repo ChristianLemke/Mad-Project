@@ -68,7 +68,7 @@ public class FindGasStationActivity extends Activity {
 		new RequestTask().execute(example);
 
 	}
-
+//tets
 	class RequestTask extends AsyncTask<String, String, List<Station>> {
 
 		private final ProgressDialog dialog = new ProgressDialog(
