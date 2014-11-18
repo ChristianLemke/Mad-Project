@@ -1,5 +1,7 @@
 package com.example.usasurvivalapp;
 
+import java.util.Date;
+
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.usasurvivalapp.helper.CurrencyValueLoader;
+import com.example.usasurvivalapp.helper.CurrencyValueLoader.CurrencyValueLoaderInterface;
 
 public class StoreFragment extends Fragment {
 	/**
-	 * The fragment argument representing the section number for this
-	 * fragment.
+	 * The fragment argument representing the section number for this fragment.
 	 */
 	private static final String ARG_SECTION_NUMBER = "section_number";
 	public static final int ARG_SECTION_NUMBER_STORE = 1;
@@ -20,6 +26,10 @@ public class StoreFragment extends Fragment {
 	Button btn_sizes;
 	Button btn_measure;
 	
+	private Button currencyButton;
+	private TextView currencyTextView;
+	
+	double currencyValue = -1;
 
 	/**
 	 * Returns a new instance of this fragment for the given section number.
@@ -75,6 +85,47 @@ public class StoreFragment extends Fragment {
 			}
 			
 		});
+
+		currencyButton = (Button) rootView.findViewById(R.id.currency_refresh_button);
+		currencyButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				reloadCurrencyValue();
+			}
+		});
+		
+		currencyTextView = (TextView) rootView
+				.findViewById(R.id.currency_refresh_textview);
+		
+		loadSavedCurrencyValue();
+
 		return rootView;
 	}
+	
+	private void loadSavedCurrencyValue() {
+		CurrencyValueLoader cvl = new CurrencyValueLoader(getActivity());
+		double lastSavedCurrencyValue = cvl.getLastSavedCurrencyValue();
+		Date lastSaveDate = cvl.getLastSaveDate();
+		currencyValue = lastSavedCurrencyValue;
+		setCurrencyValueTextView(lastSavedCurrencyValue,lastSaveDate);
+	}
+
+	private void reloadCurrencyValue(){
+		currencyTextView.setText("loading...");
+		final CurrencyValueLoader cvl = new CurrencyValueLoader(getActivity());
+		cvl.getRefreshedCurrencyValue(new CurrencyValueLoaderInterface() {
+			
+			@Override
+			public void refreshedCurrencyValueIsReady(double value) {
+				currencyValue = value;
+				setCurrencyValueTextView(currencyValue, cvl.getLastSaveDate());
+			}
+		});
+	}
+	
+	private void setCurrencyValueTextView(double value, Date date){
+		currencyTextView.setText("value: " + value + "(" + date.toString()+ ")");
+	}
+	
 }
