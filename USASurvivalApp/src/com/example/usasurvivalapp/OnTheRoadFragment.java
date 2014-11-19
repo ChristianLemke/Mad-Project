@@ -1,19 +1,31 @@
 package com.example.usasurvivalapp;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class OnTheRoadFragment extends Fragment {
 	/**
@@ -24,13 +36,17 @@ public class OnTheRoadFragment extends Fragment {
 
 	private RadioGroup radioGroupFuealType;
 	private RadioGroup radioGroupSortBy;
-	private Button buttonFindGasStations;
+	private ImageButton buttonFindGasStations;
 	private SeekBar seekBarDistance;
 	private EditText editText;
 	private EditText editTextSpeed1;
 	private EditText editTextSpeed2;
 	private EditText editTextFuelCost1;
 	private EditText editTextFuelCost2;
+	private TextView textViewCompassDirection;
+	private EditText editTextAddress;
+	private ImageButton imageButtonReloadLocation;
+	private ImageButton imageButtonShareLocation;
 
 	/**
 	 * Returns a new instance of this fragment for the given section number.
@@ -63,7 +79,7 @@ public class OnTheRoadFragment extends Fragment {
 				.findViewById(R.id.EditTextFuelCost2);
 
 		// find gas
-		buttonFindGasStations = (Button) rootView
+		buttonFindGasStations = (ImageButton) rootView
 				.findViewById(R.id.button_find_gas_stations);
 		radioGroupFuealType = (RadioGroup) rootView
 				.findViewById(R.id.radioGroupFuelType);
@@ -72,6 +88,11 @@ public class OnTheRoadFragment extends Fragment {
 		seekBarDistance = (SeekBar) rootView.findViewById(R.id.seekBarDistance);
 		editText = (EditText) rootView.findViewById(R.id.editTextDistance);
 
+		textViewCompassDirection = (TextView) rootView.findViewById(R.id.textViewCompassDirection);
+		editTextAddress = (EditText)rootView.findViewById(R.id.editTextAddress);
+		imageButtonReloadLocation = (ImageButton) rootView.findViewById(R.id.imageButtonLocationReload);
+		imageButtonShareLocation = (ImageButton) rootView.findViewById(R.id.imageButtonLocationShare);
+		
 		// speed listener
 		editTextSpeed1.addTextChangedListener(new TextWatcher() {
 
@@ -145,8 +166,27 @@ public class OnTheRoadFragment extends Fragment {
 			}
 		});
 		
+		// location
+		imageButtonReloadLocation.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				findLocation();
+			}
+		});
+		
+		imageButtonShareLocation.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				shareLocation();
+			}
+		});
+		
 		calcSpeed();
 		calcFuelCost();
+		
+		reloadCompass();
 
 		return rootView;
 	}
@@ -237,4 +277,103 @@ public class OnTheRoadFragment extends Fragment {
 		intent.putExtras(extras);
 		startActivity(intent);
 	}
+	
+	private void findLocation(){
+		// Acquire a reference to the system Location Manager
+		LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+
+		// Define a listener that responds to location updates
+		LocationListener locationListener = new LocationListener() {
+		    public void onLocationChanged(Location location) {
+		      // Called when a new location is found by the network location provider.
+		      makeUseOfNewLocation(location);
+		    }
+
+		    public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+		    public void onProviderEnabled(String provider) {}
+
+		    public void onProviderDisabled(String provider) {}
+		  };
+
+		// Register the listener with the Location Manager to receive location updates
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+	}
+
+	private void makeUseOfNewLocation(Location location) {
+		// TODO set address
+		editTextAddress.setText("Lat: " + location.getLatitude() + " Lng: " + location.getLongitude());
+	}
+	
+	private void shareLocation(){
+		//TODO share
+	}
+	
+	private void setCompass(float d){
+		// TODO Problem with landscape
+		
+		// 0=North, 90=East, 180=South, 270=West
+		String value = "";
+		// N NE E SE S SW W NW (22.5 steps)
+		// starting with N between >337.5 - 22.5 continuing in 45er steps
+		if(d > 337.5 || d <= 22.5)
+			value = "N";
+		else if(d > 22.5 * 1 && d <= 22.5 * 3)
+			value = "NE";
+		else if(d > 22.5 * 3 && d <= 22.5 * 5)
+			value = "E";
+		else if(d > 22.5 * 5 && d <= 22.5 * 7)
+			value = "SE";
+		else if(d > 22.5 * 7 && d <= 22.5 * 9)
+			value = "S";
+		else if(d > 22.5 * 9 && d <= 22.5 * 11)
+			value = "SW";
+		else if(d > 22.5 * 11 && d <= 22.5 * 13)
+			value = "W";
+		else if(d > 22.5 * 13 && d <= 22.5 * 15)
+			value = "NW";
+		
+		textViewCompassDirection.setText(value);
+	}
+	
+	SensorManager sensorService;
+	Sensor sensor;
+	
+	private void reloadCompass(){
+		// http://www.vogella.com/tutorials/AndroidSensor/article.html#compass
+		// https://www.codeofaninja.com/2013/08/android-compass-code-example.html
+		sensorService = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+		sensor = sensorService.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+	    if (sensor != null) {
+	      sensorService.registerListener(mySensorEventListener, sensor,
+	          SensorManager.SENSOR_DELAY_NORMAL);
+	      Log.i("Compass MainActivity", "Registerered for ORIENTATION Sensor");
+	    } else {
+	      Log.e("Compass MainActivity", "Registerered for ORIENTATION Sensor");
+	    }
+		
+	}
+	
+	private SensorEventListener mySensorEventListener = new SensorEventListener() {
+
+	    @Override
+	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+	    }
+
+	    @Override
+	    public void onSensorChanged(SensorEvent event) {
+	      // angle between the magnetic north direction
+	      // 0=North, 90=East, 180=South, 270=West
+	      float azimuth = event.values[0];
+	      setCompass(azimuth);
+	    }
+	  };
+	  
+	@Override
+	public void onDestroy() {
+	    super.onDestroy();
+	    if (sensor != null) {
+	      sensorService.unregisterListener(mySensorEventListener);
+	    }
+	  }
 }
