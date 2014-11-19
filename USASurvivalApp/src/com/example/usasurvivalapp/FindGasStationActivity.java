@@ -17,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -39,10 +38,26 @@ public class FindGasStationActivity extends Activity {
 
 	StationsAdapter adapter = null;
 
-	private static final String productionAPIDomain = "api.mygasfeed.com";
-	private static final String productionAPIKey = "os28ajqvrv";
-	private static final String developmentAPIDomain = "devapi.mygasfeed.com";
-	private static final String developmentAPIKey = "rfej9napna";
+	// Bundle Strings
+	public static final String FINDGASSTATION_EXTRA_DISTANCE = "FINDGASSTATION_EXTRA_DISTANCE";
+	public static final String FINDGASSTATION_EXTRA_FUELTYPE = "FINDGASSTATION_EXTRA_FUELTYPE";
+	public static final String FINDGASSTATION_EXTRA_SORTBY = "FINDGASSTATION_EXTRA_SORTBY";
+	public static final String FINDGASSTATION_EXTRA_LAT = "FINDGASSTATION_EXTRA_LAT";
+	public static final String FINDGASSTATION_EXTRA_LNG = "FINDGASSTATION_EXTRA_LNG";
+
+	// API Strings
+	public static final String MYGASFEED_API_FUELTYPE_REG = "reg";
+	public static final String MYGASFEED_API_FUELTYPE_MID = "mid";
+	public static final String MYGASFEED_API_FUELTYPE_PRE = "pre";
+	public static final String MYGASFEED_API_FUELTYPE_DIESEL = "diesel";
+
+	public static final String MYGASFEED_API_SORTBY_DISTANCE = "Distance";
+	public static final String MYGASFEED_API_SORTBY_PRICE = "Price";
+
+	private static final String MYGASFEED_API_DOMAIN = "api.mygasfeed.com";
+	private static final String MYGASFEED_API_KEY = "os28ajqvrv";
+	private static final String MYGASFEED_API_DEVELOPMENT_DOMAIN = "devapi.mygasfeed.com";
+	private static final String MYGASFEED_API_DEVELOPMENT_KEY = "rfej9napna";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +79,27 @@ public class FindGasStationActivity extends Activity {
 		 * arguments: price or distance. Gas stations will be sorted according
 		 * to the argument. apikey - An Api key
 		 */
-		String example = "http://devapi.mygasfeed.com/stations/radius/33.770050/-118.193739/3/reg/price/rfej9napna.json";
-		new RequestTask().execute(example);
 
+		// get Bundle Strings
+		Bundle extras = getIntent().getExtras();
+		if (extras == null) {
+			return;
+		}
+
+		String lat = String.valueOf(extras.getDouble(FINDGASSTATION_EXTRA_LAT));
+		String lng = String.valueOf(extras.getDouble(FINDGASSTATION_EXTRA_LNG));
+		String distance = String.valueOf(extras
+				.getInt(FINDGASSTATION_EXTRA_DISTANCE));
+		String fuelType = String.valueOf(extras
+				.getString(FINDGASSTATION_EXTRA_FUELTYPE));
+		String sortBy = String.valueOf(extras
+				.getString(FINDGASSTATION_EXTRA_SORTBY));
+
+		String uri = "http://devapi.mygasfeed.com/stations/radius/" + lat + "/"
+				+ lng + "/" + distance + "/" + fuelType + "/" + sortBy + "/"
+				+ MYGASFEED_API_DEVELOPMENT_KEY + ".json";
+		System.out.println("API_URI"+uri);
+		new RequestTask().execute(uri);
 	}
 
 	class RequestTask extends AsyncTask<String, String, List<Station>> {
