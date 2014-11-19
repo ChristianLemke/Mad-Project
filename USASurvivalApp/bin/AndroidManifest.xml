@@ -26,6 +26,14 @@
             </intent-filter>
         </activity>
         <activity android:name="FindGasStationActivity"></activity>
+        <activity android:name="CurrencyActivity"></activity>
+         <activity android:name="MeasureActivity"></activity>
+         <activity android:name="SizeActivity"></activity>
+          <provider
+            android:name="com.example.usasurvivalapp.currency.CurrencyContentProvider"
+            android:authorities="com.example.usasurvivalapp.currency.CurrencyContentProvider"
+            android:exported="false" />
+         
     </application>
 
 </manifest>

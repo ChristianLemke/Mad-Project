@@ -104,7 +104,10 @@ public class RestaurantFragment extends Fragment {
 
 	private void calcTotal() {
 
-		double currency=0.803077393;
+		CurrencyActivity c = new CurrencyActivity();
+		
+		double currency=c.getOneDollarToXEuro();;
+		System.out.println("currency"+currency);
 		double euro=0;
 		double tip_percent = 0;
 		double tip = 0;
@@ -117,7 +120,6 @@ public class RestaurantFragment extends Fragment {
 		}
 		if (input > 0) {
 			if (radio_tip15.isChecked()) {
-				System.out.println("15");
 				tip_percent = 15;
 			} else if (radio_tip18.isChecked()) {
 				tip_percent = 18;
