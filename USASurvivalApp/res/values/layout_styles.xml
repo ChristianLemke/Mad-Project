@@ -1,0 +1,25 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="list_field_style">
+        <!-- 
+        <item name="android:padding">@dimen/small_padding</item>
+          -->
+          <item name="android:background">@drawable/list_field</item>
+    </style>
+    
+    <style name="list_field_title_style">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/small_padding</item>
+        <item name="android:background">@drawable/list_field_item_title</item>
+    </style>
+    
+    <style name="list_field_item_style">
+        <item name="android:padding">@dimen/small_padding</item>
+    </style>
+    
+    <style name="list_field_title_text_style">
+        <item name="android:textColor">@color/field_title_text_color</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    
+</resources>

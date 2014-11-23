@@ -5,4 +5,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_vertical_margin2">32dp</dimen>
 
+    <dimen name="small_padding">6dp</dimen>
+    <color name="background_color">#95FFFFFF</color>
+    
+    <!-- field -->
+    <color name="field_background_color">#30FFFFFF</color>
+    <color name="field_boarder_color">#444444</color>
+    
+    <!-- field title -->
+    <color name="field_title_color">#444444</color>
+    <color name="field_title_text_color">#DDDDDD</color>
+    
 </resources>
