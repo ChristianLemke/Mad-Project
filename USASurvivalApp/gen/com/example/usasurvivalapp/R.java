@@ -10,6 +10,17 @@ package com.example.usasurvivalapp;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int background_color=0x7f050000;
+        /**  field 
+         */
+        public static final int field_background_color=0x7f050001;
+        public static final int field_boarder_color=0x7f050002;
+        /**  field title 
+         */
+        public static final int field_title_color=0x7f050003;
+        public static final int field_title_text_color=0x7f050004;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -21,104 +32,113 @@ public final class R {
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
         public static final int activity_vertical_margin2=0x7f040002;
+        public static final int small_padding=0x7f040003;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int mall=0x7f020001;
-        public static final int restaurant=0x7f020002;
-        public static final int the_open_road_usa=0x7f020003;
+        public static final int compass=0x7f020000;
+        public static final int equal=0x7f020001;
+        public static final int equal32=0x7f020002;
+        public static final int gas=0x7f020003;
+        public static final int gasstation=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int list_field=0x7f020006;
+        public static final int list_field_item_title=0x7f020007;
+        public static final int location=0x7f020008;
+        public static final int mall=0x7f020009;
+        public static final int restaurant=0x7f02000a;
+        public static final int speedometer=0x7f02000b;
+        public static final int the_open_road_usa=0x7f02000c;
     }
     public static final class id {
-        public static final int EditTextFuelCost1=0x7f080023;
-        public static final int EditTextFuelCost2=0x7f080025;
-        public static final int ImageButton01=0x7f080026;
-        public static final int ImageView01=0x7f080024;
-        public static final int LinearLayout01=0x7f080022;
-        public static final int LinearLayout1=0x7f080039;
-        public static final int RelativeLayout1=0x7f080000;
-        public static final int action_settings=0x7f080059;
-        public static final int btn_clothes=0x7f080011;
-        public static final int btn_currency=0x7f08004d;
-        public static final int btn_liquid=0x7f08000c;
-        public static final int btn_measure=0x7f080050;
-        public static final int btn_shoes=0x7f080012;
-        public static final int btn_sizes=0x7f080051;
-        public static final int btn_update=0x7f080005;
-        public static final int btn_weight=0x7f08000b;
-        public static final int button_find_gas_stations=0x7f080032;
-        public static final int currency_refresh_button=0x7f08004e;
-        public static final int currency_refresh_textview=0x7f08004f;
-        public static final int editTextAddress=0x7f080035;
-        public static final int editTextDistance=0x7f080030;
-        public static final int editTextSpeed1=0x7f08001d;
-        public static final int editTextSpeed2=0x7f08001f;
-        public static final int euro_value=0x7f08004b;
-        public static final int imageButton1=0x7f080020;
-        public static final int imageButtonLocationReload=0x7f080036;
-        public static final int imageButtonLocationShare=0x7f080037;
-        public static final int imageViewCompas=0x7f080033;
-        public static final int imageViewFuel=0x7f080021;
-        public static final int imageViewGasStation=0x7f080027;
-        public static final int imageViewSpeed=0x7f08001b;
-        public static final int imageViewSpeedDirection=0x7f08001e;
-        public static final int input_customtip=0x7f080042;
-        public static final int input_dollar=0x7f080002;
-        public static final int input_euro=0x7f080001;
-        public static final int input_from=0x7f08000f;
-        public static final int input_restaurant=0x7f08003a;
-        public static final int linearLayout1=0x7f08001c;
-        public static final int listView=0x7f080009;
-        public static final int listViewItemButtonGoNavi=0x7f080058;
-        public static final int listViewItemTextViewAddress=0x7f080054;
-        public static final int listViewItemTextViewDistance=0x7f080056;
-        public static final int listViewItemTextViewRegPrice=0x7f080055;
-        public static final int listViewItemTextViewStation=0x7f080053;
-        public static final int pager=0x7f08000a;
-        public static final int progressBar1=0x7f080057;
-        public static final int radioFuelType0=0x7f080029;
-        public static final int radioFuelType1=0x7f08002a;
-        public static final int radioFuelType2=0x7f08002b;
-        public static final int radioFuelType3=0x7f08002c;
-        public static final int radioGroupFuelType=0x7f080028;
-        public static final int radioGroupSortBy=0x7f08002d;
-        public static final int radioGroup_gender=0x7f080017;
-        public static final int radioGroup_tips=0x7f08003c;
-        public static final int radioSortBy0=0x7f08002e;
-        public static final int radioSortBy1=0x7f08002f;
-        public static final int radio_customTip=0x7f080041;
-        public static final int radio_mensizes=0x7f080019;
-        public static final int radio_tip15=0x7f08003d;
-        public static final int radio_tip18=0x7f08003f;
-        public static final int radio_tip20=0x7f080040;
-        public static final int radio_womensizes=0x7f080018;
-        public static final int scrollView1=0x7f08001a;
-        public static final int section_label=0x7f080038;
-        public static final int seekBarDistance=0x7f080031;
-        public static final int spinner_from=0x7f08000e;
-        public static final int spinner_gersizes=0x7f080016;
-        public static final int spinner_to=0x7f08000d;
-        public static final int spinner_ussizes=0x7f080015;
-        public static final int tableRow1=0x7f080043;
-        public static final int tableRow2=0x7f080047;
-        public static final int tableRow3=0x7f08004a;
-        public static final int textViewCompassDirection=0x7f080034;
-        public static final int textViewDistance=0x7f080052;
-        public static final int text_GER=0x7f080014;
-        public static final int text_US=0x7f080013;
-        public static final int text_currency=0x7f080006;
-        public static final int text_currencyactual=0x7f080008;
-        public static final int text_currencydate=0x7f080007;
-        public static final int text_dollar=0x7f080003;
-        public static final int text_dollar1=0x7f08003b;
-        public static final int text_dollar2=0x7f080046;
-        public static final int text_dollar3=0x7f08003e;
-        public static final int text_euro=0x7f08004c;
-        public static final int text_euro2=0x7f080004;
-        public static final int text_tips=0x7f080044;
-        public static final int text_to=0x7f080010;
-        public static final int text_total=0x7f080048;
-        public static final int tips_value=0x7f080045;
-        public static final int total_value=0x7f080049;
+        public static final int EditTextFuelCost1=0x7f090023;
+        public static final int EditTextFuelCost2=0x7f090025;
+        public static final int ImageView01=0x7f090024;
+        public static final int ImageView02=0x7f090032;
+        public static final int LinearLayout01=0x7f090022;
+        public static final int LinearLayout1=0x7f090038;
+        public static final int RelativeLayout1=0x7f090000;
+        public static final int action_settings=0x7f090058;
+        public static final int btn_clothes=0x7f090011;
+        public static final int btn_currency=0x7f09004c;
+        public static final int btn_liquid=0x7f09000c;
+        public static final int btn_measure=0x7f09004f;
+        public static final int btn_shoes=0x7f090012;
+        public static final int btn_sizes=0x7f090050;
+        public static final int btn_update=0x7f090005;
+        public static final int btn_weight=0x7f09000b;
+        public static final int button_find_gas_stations=0x7f090031;
+        public static final int currency_refresh_button=0x7f09004d;
+        public static final int currency_refresh_textview=0x7f09004e;
+        public static final int editTextAddress=0x7f090035;
+        public static final int editTextDistance=0x7f09002f;
+        public static final int editTextSpeed1=0x7f09001e;
+        public static final int editTextSpeed2=0x7f090020;
+        public static final int euro_value=0x7f09004a;
+        public static final int imageButtonLocationShare=0x7f090036;
+        public static final int imageView1=0x7f09001a;
+        public static final int imageViewCompas=0x7f090034;
+        public static final int imageViewFuel=0x7f090021;
+        public static final int imageViewGasStation=0x7f090026;
+        public static final int imageViewSpeed=0x7f09001c;
+        public static final int imageViewSpeedDirection=0x7f09001f;
+        public static final int input_customtip=0x7f090041;
+        public static final int input_dollar=0x7f090002;
+        public static final int input_euro=0x7f090001;
+        public static final int input_from=0x7f09000f;
+        public static final int input_restaurant=0x7f090039;
+        public static final int linearLayout1=0x7f09001d;
+        public static final int listView=0x7f090009;
+        public static final int listViewItemButtonGoNavi=0x7f090057;
+        public static final int listViewItemTextViewAddress=0x7f090053;
+        public static final int listViewItemTextViewDistance=0x7f090055;
+        public static final int listViewItemTextViewRegPrice=0x7f090054;
+        public static final int listViewItemTextViewStation=0x7f090052;
+        public static final int pager=0x7f09000a;
+        public static final int progressBar1=0x7f090056;
+        public static final int radioFuelType0=0x7f090028;
+        public static final int radioFuelType1=0x7f090029;
+        public static final int radioFuelType2=0x7f09002a;
+        public static final int radioFuelType3=0x7f09002b;
+        public static final int radioGroupFuelType=0x7f090027;
+        public static final int radioGroupSortBy=0x7f09002c;
+        public static final int radioGroup_gender=0x7f090017;
+        public static final int radioGroup_tips=0x7f09003b;
+        public static final int radioSortBy0=0x7f09002d;
+        public static final int radioSortBy1=0x7f09002e;
+        public static final int radio_customTip=0x7f090040;
+        public static final int radio_mensizes=0x7f090019;
+        public static final int radio_tip15=0x7f09003c;
+        public static final int radio_tip18=0x7f09003e;
+        public static final int radio_tip20=0x7f09003f;
+        public static final int radio_womensizes=0x7f090018;
+        public static final int scrollView1=0x7f09001b;
+        public static final int section_label=0x7f090037;
+        public static final int seekBarDistance=0x7f090030;
+        public static final int spinner_from=0x7f09000e;
+        public static final int spinner_gersizes=0x7f090016;
+        public static final int spinner_to=0x7f09000d;
+        public static final int spinner_ussizes=0x7f090015;
+        public static final int tableRow1=0x7f090042;
+        public static final int tableRow2=0x7f090046;
+        public static final int tableRow3=0x7f090049;
+        public static final int textViewCompassDirection=0x7f090033;
+        public static final int textViewDistance=0x7f090051;
+        public static final int text_GER=0x7f090014;
+        public static final int text_US=0x7f090013;
+        public static final int text_currency=0x7f090006;
+        public static final int text_currencyactual=0x7f090008;
+        public static final int text_currencydate=0x7f090007;
+        public static final int text_dollar=0x7f090003;
+        public static final int text_dollar1=0x7f09003a;
+        public static final int text_dollar2=0x7f090045;
+        public static final int text_dollar3=0x7f09003d;
+        public static final int text_euro=0x7f09004b;
+        public static final int text_euro2=0x7f090004;
+        public static final int text_tips=0x7f090043;
+        public static final int text_to=0x7f090010;
+        public static final int text_total=0x7f090047;
+        public static final int tips_value=0x7f090044;
+        public static final int total_value=0x7f090048;
     }
     public static final class layout {
         public static final int activity_currency=0x7f030000;
@@ -132,14 +152,14 @@ public final class R {
         public static final int listviewitem_station=0x7f030008;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050004;
-        public static final int app_name=0x7f050000;
-        public static final int title_ontheroad=0x7f050002;
-        public static final int title_restaurant=0x7f050003;
-        public static final int title_store=0x7f050001;
+        public static final int action_settings=0x7f070004;
+        public static final int app_name=0x7f070000;
+        public static final int title_ontheroad=0x7f070002;
+        public static final int title_restaurant=0x7f070003;
+        public static final int title_store=0x7f070001;
     }
     public static final class style {
         /** 
@@ -163,10 +183,14 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f060004;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f060005;
+        public static final int list_field_item_style=0x7f060002;
+        public static final int list_field_style=0x7f060000;
+        public static final int list_field_title_style=0x7f060001;
+        public static final int list_field_title_text_style=0x7f060003;
     }
 }
