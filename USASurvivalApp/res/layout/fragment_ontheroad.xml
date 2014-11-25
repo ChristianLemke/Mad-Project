@@ -44,9 +44,9 @@
 
                     <ImageView
                         android:id="@+id/imageViewSpeed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_send" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/speedometer" />
 
                     <TextView
                         style="@style/list_field_title_text_style"
@@ -56,7 +56,6 @@
                         android:layout_toRightOf="@+id/imageViewSpeed"
                         android:text="Speed converter"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -73,7 +72,7 @@
                             android:id="@+id/editTextSpeed1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:ems="6"
                             android:inputType="numberDecimal"
                             android:text="1" >
                         </EditText>
@@ -87,36 +86,26 @@
 
                         <ImageView
                             android:id="@+id/imageViewSpeedDirection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:src="@android:drawable/ic_media_ff" />
+                            android:src="@drawable/equal32" />
 
                         <EditText
                             android:id="@+id/editTextSpeed2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:ems="6"
-                            android:enabled="false"
                             android:inputType="numberDecimal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="kmh"
+                            android:text="km/h"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
                     </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/imageButton1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:src="@android:drawable/stat_notify_sync" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -135,11 +124,11 @@
 
                     <ImageView
                         android:id="@+id/imageViewFuel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="40dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:src="@android:drawable/ic_menu_view" />
+                        android:src="@drawable/gas" />
 
                     <TextView
                         style="@style/list_field_title_text_style"
@@ -147,9 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewFuel"
-                        android:text="Fuel cost calculator"
-                         />
-
+                        android:text="Fuel cost calculator" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -166,7 +153,7 @@
                             android:id="@+id/EditTextFuelCost1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:ems="6"
                             android:inputType="numberDecimal"
                             android:text="4" >
                         </EditText>
@@ -180,19 +167,17 @@
 
                         <ImageView
                             android:id="@+id/ImageView01"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:src="@android:drawable/ic_media_ff" />
+                            android:src="@drawable/equal32" />
 
                         <EditText
                             android:id="@+id/EditTextFuelCost2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:ems="6"
-                            android:enabled="false"
                             android:inputType="numberDecimal" />
 
                         <TextView
@@ -202,14 +187,6 @@
                             android:text="€/Liter"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
                     </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/ImageButton01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:src="@android:drawable/stat_notify_sync" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -227,9 +204,9 @@
 
                     <ImageView
                         android:id="@+id/imageViewGasStation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_directions" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/gasstation" />
 
                     <TextView
                         style="@style/list_field_title_text_style"
@@ -239,7 +216,6 @@
                         android:layout_toRightOf="@+id/imageViewGasStation"
                         android:text="Gasstation finder"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
                 </RelativeLayout>
 
                 <LinearLayout
@@ -382,10 +358,65 @@
                     android:layout_height="wrap_content" >
 
                     <ImageView
-                        android:id="@+id/imageViewCompas"
+                        android:id="@+id/ImageView02"
+                        android:layout_width="36dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/compass" />
+
+                    <TextView
+                        style="@style/list_field_title_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_mylocation" />
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ImageView02"
+                        android:text="Compass"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/list_field_item_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/textViewCompassDirection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:text="loading..."
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/list_field_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    style="@style/list_field_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/imageViewCompas"
+                        android:layout_width="36dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/location" />
 
                     <TextView
                         style="@style/list_field_title_text_style"
@@ -395,7 +426,6 @@
                         android:layout_toRightOf="@+id/imageViewCompas"
                         android:text="Where i am"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
                 </RelativeLayout>
 
                 <LinearLayout
@@ -412,31 +442,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Compass"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
-
-                            <TextView
-                                android:id="@+id/textViewCompassDirection"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="loading..."
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Address"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -444,20 +449,13 @@
                             android:id="@+id/editTextAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPostalAddress"
-                            android:lines="3"
-                            android:minLines="3" />
+                            android:minLines="3"
+                            android:text="loading..." />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" >
-
-                        <ImageButton
-                            android:id="@+id/imageButtonLocationReload"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@android:drawable/ic_menu_rotate" />
 
                         <ImageButton
                             android:id="@+id/imageButtonLocationShare"

@@ -17,6 +17,7 @@
     </style>
     
     <style name="list_field_title_text_style">
+        <item name="android:paddingLeft">@dimen/small_padding</item>
         <item name="android:textColor">@color/field_title_text_color</item>
         <item name="android:typeface">serif</item>
         <item name="android:textSize">18sp</item>

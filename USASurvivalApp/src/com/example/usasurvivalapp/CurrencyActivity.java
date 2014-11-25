@@ -52,7 +52,7 @@ public class CurrencyActivity extends Activity implements
 	double OneDollarToXEuro;
 
 	CurrencyDB db;
-
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_currency);
@@ -237,6 +237,10 @@ public class CurrencyActivity extends Activity implements
 		private String date = getDate();
 		private final ProgressDialog dialog = new ProgressDialog(
 				CurrencyActivity.this);
+
+		public RequestTask() {
+			// TODO Auto-generated constructor stub
+		}
 
 		@Override
 		protected LinkedList<String> doInBackground(String... uri) {
