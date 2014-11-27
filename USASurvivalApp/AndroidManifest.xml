@@ -7,7 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -25,15 +26,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="FindGasStationActivity"></activity>
-        <activity android:name="CurrencyActivity"></activity>
-         <activity android:name="MeasureActivity"></activity>
-         <activity android:name="SizeActivity"></activity>
-          <provider
+        <activity android:name="FindGasStationActivity" >
+        </activity>
+        <activity android:name="CurrencyActivity" >
+        </activity>
+        <activity android:name="MeasureActivity" >
+        </activity>
+        <activity android:name="SizeActivity" >
+        </activity>
+        <activity android:name="AboutActivity" >
+        </activity>
+
+        <provider
             android:name="com.example.usasurvivalapp.currency.CurrencyContentProvider"
             android:authorities="com.example.usasurvivalapp.currency.CurrencyContentProvider"
             android:exported="false" />
-         
     </application>
 
 </manifest>

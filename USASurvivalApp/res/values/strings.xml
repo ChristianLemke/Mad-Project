@@ -6,5 +6,6 @@
     <string name="title_ontheroad">On the Road</string>
     <string name="title_restaurant">Restaurant</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
 
 </resources>

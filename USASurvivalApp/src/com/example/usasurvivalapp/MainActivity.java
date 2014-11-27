@@ -3,18 +3,19 @@ package com.example.usasurvivalapp;
 import java.util.Locale;
 
 import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
@@ -66,9 +67,13 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			// the adapter. Also specify this Activity object, which implements
 			// the TabListener interface, as the callback (listener) for when
 			// this tab is selected.
-			actionBar.addTab(actionBar.newTab()
-					.setText(mSectionsPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
+
+			Tab tab = actionBar.newTab();
+			tab.setText(mSectionsPagerAdapter.getPageTitle(i));
+			tab.setIcon(mSectionsPagerAdapter.getIcon(i));
+			tab.setTabListener(this);
+
+			actionBar.addTab(tab);
 		}
 	}
 
@@ -85,7 +90,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_about) {
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -160,6 +167,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			}
 
 		}
-	}
 
+		public Drawable getIcon(int position) {
+			switch (position + 1) {
+			case StoreFragment.ARG_SECTION_NUMBER_STORE:
+				return getResources().getDrawable(R.drawable.commercial17);
+			case OnTheRoadFragment.ARG_SECTION_NUMBER_ONTHEROAD:
+				return getResources().getDrawable(R.drawable.sedan2);
+			case RestaurantFragment.ARG_SECTION_NUMBER_RESTAURANT:
+				return getResources().getDrawable(R.drawable.plate7);
+
+			default:
+				return null;
+			}
+		}
+
+	}
 }

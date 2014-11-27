@@ -14,16 +14,18 @@ Languages:
 Settings
 About
 On the road:
-	converters in both directions
 	better stations listview
-	location address from location
-	share location
 Restaurant
 	Currency
 
 Christian Project DONEs:		Tasktime in h
 main tab layout with swipe		1
+Layout design with windows		6
+Tab style						1
 On the road:
+	share location				.5
+	location address from location 2
+	converters in both directions 1.5
 	converters					.5
 	api gasstations				4
 	gas options					1
@@ -34,6 +36,8 @@ Restaurant
 Store
 	currency api				6
 	calculator					2
+About
+	Activity					.5
 
 Jasmin Project DONEs:		Tasktime in h
 main tab layout with swipe		1
