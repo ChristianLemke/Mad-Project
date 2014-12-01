@@ -1,8 +1,11 @@
 package com.example.usasurvivalapp;
 
+import java.text.DecimalFormat;
+
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -23,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
@@ -34,6 +38,8 @@ public class OnTheRoadFragment extends Fragment {
 	private static final double KMH_IN_MPH = 0.621371192;
 	private static final double ONE_GALLON_IN_LITER = 3.78541178;
 	private static final double ONE_LITER_IN_GALLON = 0.264172052;
+
+	private Location lastLocation = null;
 	/**
 	 * The fragment argument representing the section number for this fragment.
 	 */
@@ -106,7 +112,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				if(editTextSpeed1.isFocused())
+				if (editTextSpeed1.isFocused())
 					calcSpeedMPHtoKMH();
 			}
 
@@ -127,7 +133,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				if(editTextSpeed2.isFocused())
+				if (editTextSpeed2.isFocused())
 					calcSpeedKMHtoMPH();
 			}
 
@@ -148,7 +154,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				if(editTextFuelCost1.isFocused())
+				if (editTextFuelCost1.isFocused())
 					calcFuelCostDollarPerGallonInEuroPerLiter();
 			}
 
@@ -176,7 +182,7 @@ public class OnTheRoadFragment extends Fragment {
 
 			@Override
 			public void afterTextChanged(Editable s) {
-				if(editTextFuelCost2.isFocused())
+				if (editTextFuelCost2.isFocused())
 					calcFuelCostEuroPerLiterInDollarPerGallon();
 			}
 		});
@@ -241,7 +247,8 @@ public class OnTheRoadFragment extends Fragment {
 		} catch (Exception e) {
 			value = 0;
 		}
-		editTextSpeed1.setText(String.valueOf(value * KMH_IN_MPH));
+		DecimalFormat df = new DecimalFormat("0.00");
+		editTextSpeed1.setText(String.valueOf(df.format(value * KMH_IN_MPH)));
 	}
 
 	private void calcSpeedMPHtoKMH() {
@@ -252,7 +259,8 @@ public class OnTheRoadFragment extends Fragment {
 		} catch (Exception e) {
 			value = 0;
 		}
-		editTextSpeed2.setText(String.valueOf(value * MPH_IN_KMH));
+		DecimalFormat df = new DecimalFormat("0.00");
+		editTextSpeed2.setText(String.valueOf( df.format(value * MPH_IN_KMH)));
 	}
 
 	private void calcFuelCostDollarPerGallonInEuroPerLiter() {
@@ -266,10 +274,23 @@ public class OnTheRoadFragment extends Fragment {
 		}
 
 		// dollar/gallon -> euro/liter
-		// TODO get current currency value
-		double result = value1 * 0.805094639 / ONE_GALLON_IN_LITER;
-
-		editTextFuelCost2.setText(String.valueOf(result));
+		// get current currency value
+		
+		SharedPreferences appPrefs = getActivity()
+				.getSharedPreferences(
+						"com.example.usasurvivalapp.currency.currency_preferences",
+						getActivity().MODE_PRIVATE);
+		String currencyS = appPrefs.getString("currency","");
+		double currency = 0.805094639;
+		try{
+			currency = Double.parseDouble(currencyS);
+		}catch(Exception e){
+			currency =0.805094639;
+		}
+		
+		double result = value1 * currency / ONE_GALLON_IN_LITER;
+		DecimalFormat df = new DecimalFormat("0.0000");
+		editTextFuelCost2.setText(String.valueOf(df.format(result)));
 	}
 
 	private void calcFuelCostEuroPerLiterInDollarPerGallon() {
@@ -286,7 +307,8 @@ public class OnTheRoadFragment extends Fragment {
 		// 1 liter = 0.264172052 US gallons
 		double result = value1 * 1.24209 / ONE_LITER_IN_GALLON;
 
-		editTextFuelCost1.setText(String.valueOf(result));
+		DecimalFormat df = new DecimalFormat("0.0000");
+		editTextFuelCost1.setText(String.valueOf(df.format(result)));
 	}
 
 	@Override
@@ -299,11 +321,17 @@ public class OnTheRoadFragment extends Fragment {
 		// get values
 		Intent intent = new Intent(getActivity(), FindGasStationActivity.class);
 		Bundle extras = new Bundle();
-		// TODO get location!!!
+
+		if (lastLocation == null) {
+			Toast.makeText(getActivity(), R.string.waiting_for_location,
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
+
 		extras.putDouble(FindGasStationActivity.FINDGASSTATION_EXTRA_LAT,
-				Double.valueOf("33.770050"));
+				lastLocation.getLatitude());
 		extras.putDouble(FindGasStationActivity.FINDGASSTATION_EXTRA_LNG,
-				Double.valueOf("-118.193739"));
+				lastLocation.getLongitude());
 		extras.putInt(FindGasStationActivity.FINDGASSTATION_EXTRA_DISTANCE,
 				seekBarDistance.getProgress());
 
@@ -372,6 +400,9 @@ public class OnTheRoadFragment extends Fragment {
 				// provider.
 				Log.i("location", "Lat: " + location.getLatitude() + " Lng: "
 						+ location.getLongitude());
+
+				lastLocation = location;
+
 				if (!taskRunning) {
 					taskRunning = true;
 					GetAddressTask getAddressTask = new GetAddressTask(
@@ -419,14 +450,14 @@ public class OnTheRoadFragment extends Fragment {
 	}
 
 	private void shareLocation() {
-		String shareBody = "Hey my current Address is\n"
+		String shareBody = getActivity().getString(R.string.hey_my_current_address_is_)
 				+ editTextAddress.getText();
 		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 		sharingIntent.setType("text/plain");
 		sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-				"My Address");
+				R.string.my_address);
 		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-		startActivity(Intent.createChooser(sharingIntent, "share it using..."));
+		startActivity(Intent.createChooser(sharingIntent, getActivity().getString(R.string.share_it_using_)));
 	}
 
 	private void setCompass(float d) {

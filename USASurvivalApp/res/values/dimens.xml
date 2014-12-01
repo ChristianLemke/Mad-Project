@@ -8,6 +8,8 @@
     <dimen name="small_padding">6dp</dimen>
     <color name="background_color">#00FFFFFF</color>
     
+    <color name="field_text_color">#000000</color>
+    
     <!-- field -->
     <color name="field_background_color">#A0FFFFFF</color>
     <color name="field_boarder_color">#444444</color>

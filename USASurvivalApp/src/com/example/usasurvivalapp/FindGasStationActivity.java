@@ -29,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -98,7 +99,7 @@ public class FindGasStationActivity extends Activity {
 		String uri = "http://devapi.mygasfeed.com/stations/radius/" + lat + "/"
 				+ lng + "/" + distance + "/" + fuelType + "/" + sortBy + "/"
 				+ MYGASFEED_API_DEVELOPMENT_KEY + ".json";
-		System.out.println("API_URI"+uri);
+		System.out.println("API_URI" + uri);
 		new RequestTask().execute(uri);
 	}
 
@@ -134,7 +135,10 @@ public class FindGasStationActivity extends Activity {
 					for (int i = 0; i < jsonArrayStations.length(); i++) {
 						Station station = convertStation(jsonArrayStations
 								.getJSONObject(i));
-						stations.add(station);
+
+						if (!station.price.equals("N/A"))
+							stations.add(station);
+
 					}
 
 				} else {
@@ -155,7 +159,7 @@ public class FindGasStationActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("Searching gas-stations...");
+			dialog.setMessage(getString(R.string.searching_gas_stations_));
 			dialog.show();
 		}
 
@@ -234,23 +238,32 @@ public class FindGasStationActivity extends Activity {
 			}
 
 			final Station s = itemList.get(position);
-			TextView text = (TextView) v
+			TextView station = (TextView) v
 					.findViewById(R.id.listViewItemTextViewStation);
-			text.setText(s.getStation());
+			if (s.getStation() == null || s.getStation().equals("null")) {
+				station.setText(R.string.gas_station);
+			} else {
+				station.setText(s.getStation());
+			}
 
-			TextView text1 = (TextView) v
+			TextView address = (TextView) v
 					.findViewById(R.id.listViewItemTextViewAddress);
-			text1.setText(s.getAddress());
+			address.setText(s.getAddress());
 
-			TextView text2 = (TextView) v
+			// TextView city = (TextView) v
+			// .findViewById(R.id.listViewItemTextViewCity);
+			// city.setText(s.getCity());
+
+			TextView distance = (TextView) v
 					.findViewById(R.id.listViewItemTextViewDistance);
-			text2.setText(s.getDistance());
+			distance.setText(s.getDistance());
 
-			TextView text3 = (TextView) v
-					.findViewById(R.id.listViewItemTextViewRegPrice);
-			text3.setText(s.getPrice());
+			TextView price = (TextView) v
+					.findViewById(R.id.listViewItemTextViewPrice);
+			price.setText(s.getPrice() + "$");
 
-			Button b = (Button) v.findViewById(R.id.listViewItemButtonGoNavi);
+			ImageButton b = (ImageButton) v
+					.findViewById(R.id.listViewItemButtonGoNavi);
 			b.setOnClickListener(new OnClickListener() {
 
 				@Override

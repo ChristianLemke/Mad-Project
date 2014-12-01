@@ -4,6 +4,9 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +28,8 @@ public class RestaurantFragment extends Fragment {
 	RadioButton radio_tip18;
 	RadioButton radio_tip20;
 	RadioButton radio_customTip;
+	Context context;
+	double currency=0.8;
 
 	/**
 	 * The fragment argument representing the section number for this fragment.
@@ -52,6 +57,7 @@ public class RestaurantFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_restaurant,
 				container, false);
 
+		context = this.getActivity();
 		euro_value = (TextView) rootView.findViewById(R.id.euro_value);
 		total_value = (TextView) rootView.findViewById(R.id.total_value);
 		tips_value = (TextView) rootView.findViewById(R.id.tips_value);
@@ -84,10 +90,23 @@ public class RestaurantFragment extends Fragment {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				
+				SharedPreferences appPrefs = context
+						.getSharedPreferences(
+								"com.example.usasurvivalapp.currency.currency_preferences",
+								context.MODE_PRIVATE);
+				String currencyS = appPrefs.getString("currency","");
+				try{
+					currency = Double.parseDouble(currencyS);
+				}catch(Exception e){
+					currency =0.8;
+				}
 				calcTotal();
 			}
 
 		});
+		
+		radio_tip15.setChecked(true);
 		radioGroup_tips
 				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -98,16 +117,36 @@ public class RestaurantFragment extends Fragment {
 					}
 
 				});
+		
+	input_customtip.addTextChangedListener(new TextWatcher(){
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			calcTotal();
+			
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	});
 
 		return rootView;
 	}
 
 	private void calcTotal() {
 
-		CurrencyActivity c = new CurrencyActivity();
-		
-		double currency=c.getOneDollarToXEuro();;
-		System.out.println("currency"+currency);
 		double euro=0;
 		double tip_percent = 0;
 		double tip = 0;

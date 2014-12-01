@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewSpeed"
-                        android:text="Speed converter"
+                        android:text="@string/speed_converter"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </RelativeLayout>
 
@@ -136,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewFuel"
-                        android:text="Fuel cost calculator" />
+                        android:text="@string/fuel_cost_calculator" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -214,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewGasStation"
-                        android:text="Gasstation finder"
+                        android:text="@string/gasstation_finder"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </RelativeLayout>
 
@@ -232,7 +232,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fuel Type" />
+                            android:text="@string/fuel_type" />
 
                         <RadioGroup
                             android:id="@+id/radioGroupFuelType"
@@ -275,7 +275,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sort By" />
+                            android:text="@string/sort_by" />
 
                         <RadioGroup
                             android:id="@+id/radioGroupSortBy"
@@ -288,13 +288,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
-                                android:text="Distance" />
+                                android:text="@string/distance" />
 
                             <RadioButton
                                 android:id="@+id/radioSortBy1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Price" />
+                                android:text="@string/price" />
                         </RadioGroup>
                     </LinearLayout>
 
@@ -306,7 +306,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Distance(miles): " />
+                            android:text="@string/distance_miles_" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -369,7 +369,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/ImageView02"
-                        android:text="Compass"
+                        android:text="@string/compass"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </RelativeLayout>
 
@@ -393,7 +393,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:text="loading..."
+                                android:text="@string/loading_"
                                 android:textAppearance="?android:attr/textAppearanceLarge" />
                         </RelativeLayout>
                     </LinearLayout>
@@ -424,7 +424,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewCompas"
-                        android:text="Where i am"
+                        android:text="@string/where_i_am"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </RelativeLayout>
 
@@ -442,7 +442,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Address"
+                            android:text="@string/address"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <EditText
@@ -450,7 +450,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:minLines="3"
-                            android:text="loading..." />
+                            android:text="@string/loading_" />
                     </LinearLayout>
 
                     <LinearLayout

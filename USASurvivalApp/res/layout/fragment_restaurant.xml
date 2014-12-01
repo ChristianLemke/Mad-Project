@@ -4,206 +4,252 @@
     android:layout_height="match_parent"
     tools:context="com.example.usasurvivalapp.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/section_label"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="restaurant" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/restaurant_background" />
 
     <ScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/section_label" >
+        android:layout_alignParentTop="true"
+        android:background="@color/background_color"
+        android:padding="@dimen/small_padding" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_horizontal_margin" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tip calculator"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="vertical" >
 
             <LinearLayout
-                android:id="@+id/LinearLayout1"
+                style="@style/list_field_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <EditText
-                        android:id="@+id/input_restaurant"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="numberDecimal" />
-
-                    <TextView
-                        android:id="@+id/text_dollar1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="$"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-                </LinearLayout>
-
                 <RelativeLayout
+                    style="@style/list_field_title_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
-                    <RadioGroup
-                        android:id="@+id/radioGroup_tips"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                    <ImageView
+                        android:id="@+id/imageViewSpeed"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignBottom="@+id/textView1"
+                        android:layout_alignTop="@+id/textView1"
+                        android:src="@drawable/restaurant" />
 
-                        <RadioButton
-                            android:id="@+id/radio_tip15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/input_restaurant"
-                            android:layout_toRightOf="@+id/text_dollar3"
-                            android:text="15%" />
-
-                        <RadioButton
-                            android:id="@+id/radio_tip18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignLeft="@+id/radio_tip15"
-                            android:layout_below="@+id/radio_tip15"
-                            android:text="18%" />
-
-                        <RadioButton
-                            android:id="@+id/radio_tip20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20%" />
-
-                        <RadioButton
-                            android:id="@+id/radio_customTip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </RadioGroup>
-
-                    <EditText
-                        android:id="@+id/input_customtip"
+                    <TextView
+                        style="@style/list_field_title_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/radioGroup_tips"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:text="0" >
-
-                        <requestFocus android:layout_width="match_parent" />
-
-                    </EditText>
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/imageViewSpeed"
+                        android:text="@string/string_tipcalculator"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_horizontal_margin" >
+
+              
+                    <LinearLayout
+                        android:id="@+id/LinearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <EditText
+                                android:id="@+id/input_restaurant"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="numberDecimal" />
+
+                            <TextView
+                                android:id="@+id/text_dollar1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="$"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <RadioGroup
+                                android:id="@+id/radioGroup_tips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/radio_tip15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/input_restaurant"
+                                    android:layout_toRightOf="@+id/text_dollar3"
+                                    android:text="15%" />
+
+                                <RadioButton
+                                    android:id="@+id/radio_tip18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/radio_tip15"
+                                    android:layout_below="@+id/radio_tip15"
+                                    android:text="18%" />
+
+                                <RadioButton
+                                    android:id="@+id/radio_tip20"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20%" />
+
+                                <RadioButton
+                                    android:id="@+id/radio_customTip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </RadioGroup>
+
+                            <EditText
+                                android:id="@+id/input_customtip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="0" >
+
+                                <requestFocus />
+                            </EditText>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="1"
+                                android:text="%"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dip"
+                        android:layout_marginTop="30dp"
+                        android:background="#FF0000" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:stretchColumns="1" >
+
+                        <TableRow
+                            android:id="@+id/tableRow1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/text_tips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/string_tips"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <TextView
+                                android:id="@+id/tips_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="0.00"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <TextView
+                                android:id="@+id/text_dollar2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/text_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                               android:text="@string/string_total"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <TextView
+                                android:id="@+id/total_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="0.00"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <TextView
+                                android:id="@+id/text_dollar3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/euro_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:gravity="right"
+                                android:text="0.00"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                            <TextView
+                                android:id="@+id/text_euro"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="2"
+                                android:text="€"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
             </LinearLayout>
-            
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dip"
-                android:layout_marginTop="30dp"
-                android:background="#FF0000" />
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:stretchColumns="1" >
-
-                <TableRow
-                    android:id="@+id/tableRow1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/text_tips"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="tips"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                    <TextView
-                        android:id="@+id/tips_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="0.00"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                    <TextView
-                        android:id="@+id/text_dollar2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/text_total"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="total"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                    <TextView
-                        android:id="@+id/total_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="0.00"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                    <TextView
-                        android:id="@+id/text_dollar3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/euro_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:gravity="right"
-                        android:text="0.00"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                    <TextView
-                        android:id="@+id/text_euro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="2"
-                        android:text="€"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                </TableRow>
-            </TableLayout>
-
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 </RelativeLayout>
