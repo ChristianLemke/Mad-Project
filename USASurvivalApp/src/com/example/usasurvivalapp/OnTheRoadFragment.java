@@ -29,6 +29,11 @@ import android.widget.TextView;
 import com.example.usasurvivalapp.helper.GetAddressTask;
 import com.example.usasurvivalapp.helper.GetAddressTask.GetAddressTaskListener;
 
+/**
+ * This Fragment is for the OnTheRoadFragmentTab. 
+ * @author chris
+ *
+ */
 public class OnTheRoadFragment extends Fragment {
 	private static final double MPH_IN_KMH = 1.609344;
 	private static final double KMH_IN_MPH = 0.621371192;
@@ -106,6 +111,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if(editTextSpeed1.isFocused())
 					calcSpeedMPHtoKMH();
 			}
@@ -127,6 +133,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if(editTextSpeed2.isFocused())
 					calcSpeedKMHtoMPH();
 			}
@@ -148,6 +155,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if(editTextFuelCost1.isFocused())
 					calcFuelCostDollarPerGallonInEuroPerLiter();
 			}
@@ -176,6 +184,7 @@ public class OnTheRoadFragment extends Fragment {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				// check focus to avoid stack overflow exception
 				if(editTextFuelCost2.isFocused())
 					calcFuelCostEuroPerLiterInDollarPerGallon();
 			}
@@ -196,7 +205,6 @@ public class OnTheRoadFragment extends Fragment {
 					@Override
 					public void onProgressChanged(SeekBar seekBar,
 							int progress, boolean fromUser) {
-						// TODO try to keep the size of the editText
 						String value = String.valueOf(progress);
 
 						if (progress < 100)
