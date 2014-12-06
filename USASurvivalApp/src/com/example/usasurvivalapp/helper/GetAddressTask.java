@@ -36,7 +36,6 @@ public class GetAddressTask extends AsyncTask<Location, Void, Address> {
 	 */
 	@Override
 	protected Address doInBackground(Location... params) {
-		// TODO
 		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
 		// Get the current location from the input parameter list
 		Location loc = params[0];

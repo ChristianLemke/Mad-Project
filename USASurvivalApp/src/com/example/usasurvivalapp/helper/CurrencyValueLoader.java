@@ -19,6 +19,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
+/**
+ * @deprecated use CurrencyContentProvider
+ * Currency loader using shared preferences
+ */
 public class CurrencyValueLoader {
 
 	private CurrencyValueLoaderInterface cvli;

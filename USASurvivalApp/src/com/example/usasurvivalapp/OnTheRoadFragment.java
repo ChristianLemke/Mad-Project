@@ -33,6 +33,12 @@ import android.widget.TextView;
 import com.example.usasurvivalapp.helper.GetAddressTask;
 import com.example.usasurvivalapp.helper.GetAddressTask.GetAddressTaskListener;
 
+/**
+ * This Fragment is for the OnTheRoadFragmentTab.
+ * 
+ * @author chris
+ * 
+ */
 public class OnTheRoadFragment extends Fragment {
 	private static final double MPH_IN_KMH = 1.609344;
 	private static final double KMH_IN_MPH = 0.621371192;
@@ -112,6 +118,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if (editTextSpeed1.isFocused())
 					calcSpeedMPHtoKMH();
 			}
@@ -133,6 +140,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if (editTextSpeed2.isFocused())
 					calcSpeedKMHtoMPH();
 			}
@@ -154,6 +162,7 @@ public class OnTheRoadFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				// check focus to avoid stack overflow exception
 				if (editTextFuelCost1.isFocused())
 					calcFuelCostDollarPerGallonInEuroPerLiter();
 			}
@@ -182,6 +191,7 @@ public class OnTheRoadFragment extends Fragment {
 
 			@Override
 			public void afterTextChanged(Editable s) {
+				// check focus to avoid stack overflow exception
 				if (editTextFuelCost2.isFocused())
 					calcFuelCostEuroPerLiterInDollarPerGallon();
 			}
@@ -202,7 +212,6 @@ public class OnTheRoadFragment extends Fragment {
 					@Override
 					public void onProgressChanged(SeekBar seekBar,
 							int progress, boolean fromUser) {
-						// TODO try to keep the size of the editText
 						String value = String.valueOf(progress);
 
 						if (progress < 100)
@@ -234,7 +243,7 @@ public class OnTheRoadFragment extends Fragment {
 		calcFuelCostDollarPerGallonInEuroPerLiter();
 
 		reloadCompass();
-		findLocation();
+		CreateLocationManager();
 
 		return rootView;
 	}
@@ -260,12 +269,11 @@ public class OnTheRoadFragment extends Fragment {
 			value = 0;
 		}
 		DecimalFormat df = new DecimalFormat("0.00");
-		editTextSpeed2.setText(String.valueOf( df.format(value * MPH_IN_KMH)));
+		editTextSpeed2.setText(String.valueOf(df.format(value * MPH_IN_KMH)));
 	}
 
 	private void calcFuelCostDollarPerGallonInEuroPerLiter() {
 		// 1 U.S. dollar / US gallon = 0.210794635 Euros / liter
-
 		double value1 = 0;
 		try {
 			value1 = Double.parseDouble(editTextFuelCost1.getText().toString());
@@ -275,19 +283,18 @@ public class OnTheRoadFragment extends Fragment {
 
 		// dollar/gallon -> euro/liter
 		// get current currency value
-		
-		SharedPreferences appPrefs = getActivity()
-				.getSharedPreferences(
-						"com.example.usasurvivalapp.currency.currency_preferences",
-						getActivity().MODE_PRIVATE);
-		String currencyS = appPrefs.getString("currency","");
+
+		SharedPreferences appPrefs = getActivity().getSharedPreferences(
+				"com.example.usasurvivalapp.currency.currency_preferences",
+				getActivity().MODE_PRIVATE);
+		String currencyS = appPrefs.getString("currency", "");
 		double currency = 0.805094639;
-		try{
+		try {
 			currency = Double.parseDouble(currencyS);
-		}catch(Exception e){
-			currency =0.805094639;
+		} catch (Exception e) {
+			currency = 0.805094639;
 		}
-		
+
 		double result = value1 * currency / ONE_GALLON_IN_LITER;
 		DecimalFormat df = new DecimalFormat("0.0000");
 		editTextFuelCost2.setText(String.valueOf(df.format(result)));
@@ -303,9 +310,23 @@ public class OnTheRoadFragment extends Fragment {
 			value1 = 0;
 		}
 
-		// TODO get current currency value
+		// current currency value
+		SharedPreferences appPrefs = getActivity().getSharedPreferences(
+				"com.example.usasurvivalapp.currency.currency_preferences",
+				getActivity().MODE_PRIVATE);
+		String currencyS = appPrefs.getString("currency", "");
+		double currency = 1.24209;
+		try {
+			currency = Double.parseDouble(currencyS);
+		} catch (Exception e) {
+			currency = 1.24209;
+		}
+		
+		// currency in euro to dollar
+		currency = 1 / currency;
+
 		// 1 liter = 0.264172052 US gallons
-		double result = value1 * 1.24209 / ONE_LITER_IN_GALLON;
+		double result = value1 * currency / ONE_LITER_IN_GALLON;
 
 		DecimalFormat df = new DecimalFormat("0.0000");
 		editTextFuelCost1.setText(String.valueOf(df.format(result)));
@@ -313,7 +334,6 @@ public class OnTheRoadFragment extends Fragment {
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
 	}
 
@@ -328,6 +348,7 @@ public class OnTheRoadFragment extends Fragment {
 			return;
 		}
 
+		// create extras
 		extras.putDouble(FindGasStationActivity.FINDGASSTATION_EXTRA_LAT,
 				lastLocation.getLatitude());
 		extras.putDouble(FindGasStationActivity.FINDGASSTATION_EXTRA_LNG,
@@ -381,88 +402,26 @@ public class OnTheRoadFragment extends Fragment {
 		startActivity(intent);
 	}
 
-	/**
-	 * Start location listener. on each location update run the getAddressTask
-	 * if it is not running.
-	 */
-	private void findLocation() {
-		// Acquire a reference to the system Location Manager
-		LocationManager locationManager = (LocationManager) getActivity()
+	private void CreateLocationManager() {
+		locationManager = (LocationManager) getActivity()
 				.getSystemService(Context.LOCATION_SERVICE);
-
-		// Define a listener that responds to location updates
-		LocationListener locationListener = new LocationListener() {
-
-			boolean taskRunning = false;
-
-			public void onLocationChanged(Location location) {
-				// Called when a new location is found by the network location
-				// provider.
-				Log.i("location", "Lat: " + location.getLatitude() + " Lng: "
-						+ location.getLongitude());
-
-				lastLocation = location;
-
-				if (!taskRunning) {
-					taskRunning = true;
-					GetAddressTask getAddressTask = new GetAddressTask(
-							getActivity(), new GetAddressTaskListener() {
-
-								@Override
-								public void gotAddress(Address address) {
-									String addressText = "";
-									for (int i = 0; i <= address
-											.getMaxAddressLineIndex(); i++) {
-										addressText += address
-												.getAddressLine(i);
-										if (i < address
-												.getMaxAddressLineIndex())
-											addressText += "\n";
-									}
-									editTextAddress.setText(addressText);
-
-									if (!editText.getText().equals(addressText)) {
-										Log.i("new address", addressText);
-									}
-
-									taskRunning = false;
-								}
-							});
-					getAddressTask.execute(location);
-				}
-			}
-
-			public void onStatusChanged(String provider, int status,
-					Bundle extras) {
-			}
-
-			public void onProviderEnabled(String provider) {
-			}
-
-			public void onProviderDisabled(String provider) {
-			}
-		};
-
-		// Register the listener with the Location Manager to receive location
-		// updates
-		locationManager.requestLocationUpdates(
-				LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+		
 	}
 
 	private void shareLocation() {
-		String shareBody = getActivity().getString(R.string.hey_my_current_address_is_)
+		String shareBody = getActivity().getString(
+				R.string.hey_my_current_address_is_)
 				+ editTextAddress.getText();
 		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 		sharingIntent.setType("text/plain");
 		sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
 				R.string.my_address);
 		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-		startActivity(Intent.createChooser(sharingIntent, getActivity().getString(R.string.share_it_using_)));
+		startActivity(Intent.createChooser(sharingIntent, getActivity()
+				.getString(R.string.share_it_using_)));
 	}
 
 	private void setCompass(float d) {
-		// TODO Problem with landscape
-
 		// 0=North, 90=East, 180=South, 270=West
 		String value = "";
 		// N NE E SE S SW W NW (22.5 steps)
@@ -491,8 +450,6 @@ public class OnTheRoadFragment extends Fragment {
 	Sensor sensor;
 
 	private void reloadCompass() {
-		// http://www.vogella.com/tutorials/AndroidSensor/article.html#compass
-		// https://www.codeofaninja.com/2013/08/android-compass-code-example.html
 		sensorService = (SensorManager) getActivity().getSystemService(
 				Context.SENSOR_SERVICE);
 		sensor = sensorService.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -520,13 +477,88 @@ public class OnTheRoadFragment extends Fragment {
 			setCompass(azimuth);
 		}
 	};
+	private LocationManager locationManager;
+	private LocationListener myLocationListener = null;
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		if (locationManager != null) {
+			myLocationListener = new MyLocationListener();
+			locationManager.requestLocationUpdates(
+					LocationManager.NETWORK_PROVIDER, 0, 0, new MyLocationListener());
+		}
+	};
+	
+	@Override
+	public void onStop() {
+		if (sensor != null) {
+			sensorService.unregisterListener(mySensorEventListener);
+		}
+		if (locationManager != null && myLocationListener != null) {
+			locationManager.removeUpdates(myLocationListener);
+		}
+		super.onStop();
+	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		if (sensor != null) {
-			sensorService.unregisterListener(mySensorEventListener);
-		}
+		
 	}
+	
+	/**
+	 * Start location listener. on each location update run the getAddressTask
+	 * if it is not running.
+	 */
+	private class MyLocationListener implements LocationListener {
 
+		boolean taskRunning = false;
+
+		public void onLocationChanged(Location location) {
+			// Called when a new location is found by the network location
+			// provider.
+			Log.i("location", "Lat: " + location.getLatitude() + " Lng: "
+					+ location.getLongitude());
+
+			lastLocation = location;
+
+			if (!taskRunning) {
+				taskRunning = true;
+				GetAddressTask getAddressTask = new GetAddressTask(
+						getActivity(), new GetAddressTaskListener() {
+
+							@Override
+							public void gotAddress(Address address) {
+								String addressText = "";
+								for (int i = 0; i <= address
+										.getMaxAddressLineIndex(); i++) {
+									addressText += address
+											.getAddressLine(i);
+									if (i < address
+											.getMaxAddressLineIndex())
+										addressText += "\n";
+								}
+								editTextAddress.setText(addressText);
+
+								if (!editText.getText().equals(addressText)) {
+									Log.i("new address", addressText);
+								}
+
+								taskRunning = false;
+							}
+						});
+				getAddressTask.execute(location);
+			}
+		}
+
+		public void onStatusChanged(String provider, int status,
+				Bundle extras) {
+		}
+
+		public void onProviderEnabled(String provider) {
+		}
+
+		public void onProviderDisabled(String provider) {
+		}}
 }

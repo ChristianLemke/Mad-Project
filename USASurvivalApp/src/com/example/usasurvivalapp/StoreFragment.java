@@ -3,10 +3,10 @@ package com.example.usasurvivalapp;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
-
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -15,12 +15,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.example.usasurvivalapp.currency.CurrencyContentProvider;
-import com.example.usasurvivalapp.currency.CurrencyDB;
-
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.CursorLoader;
@@ -36,12 +33,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -50,6 +46,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.usasurvivalapp.currency.CurrencyContentProvider;
+import com.example.usasurvivalapp.currency.CurrencyDB;
 
 public class StoreFragment extends Fragment implements
 		LoaderCallbacks<Cursor> {

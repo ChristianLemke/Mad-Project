@@ -5,23 +5,12 @@ USA Survival APP
 Team:
 Jasmin Profus, Christian Lemke
 
-
-Project TODOs:
-Layout
-Images
-Languages: 
-	German
-Settings
-About
-On the road:
-	better stations listview
-Restaurant
-	Currency
-
-Christian Project DONEs:		Tasktime in h
+-----------------------------------------------
+-Christian Project DONEs:		Tasktime in h
 main tab layout with swipe		1
 Layout design with windows		6
 Tab style						1
+Images							1.5
 On the road:
 	share location				.5
 	location address from location 2
@@ -31,6 +20,8 @@ On the road:
 	gas options					1
 	get location				1
 	compass						1
+	better stations listview	1
+	About						1
 Restaurant
 	tip calculator				3
 Store
@@ -38,9 +29,11 @@ Store
 	calculator					2
 About
 	Activity					.5
-
-Jasmin Project DONEs:		Tasktime in h
+--------------------------------------------------
+-Jasmin Project DONEs:			Tasktime in h
 main tab layout with swipe		1
+Languages: German				1
+Images							1.5
 
 Restaurant
 	tip calculator				5
@@ -56,6 +49,8 @@ Currency Converter
 								7.75
 
 Project Sources:
-gasfeed.com
-android.google.com
+gasfeed.com					(api for the gas stations)
+android.google.com			(a lot of informations...)
+http://www.flaticon.com/	(for the images, fee icons)
+http://stackoverflow.com/ 	(to solve some exceptions)
 ...

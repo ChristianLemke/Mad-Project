@@ -64,17 +64,21 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
-                        android:id="@+id/linearLayout1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/imageViewSpeedDirection" >
 
                         <EditText
                             android:id="@+id/editTextSpeed1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ems="6"
+                            android:layout_weight="1"
+                            android:ems="4"
                             android:inputType="numberDecimal"
                             android:text="1" >
+
+                            <requestFocus />
                         </EditText>
 
                         <TextView
@@ -83,20 +87,29 @@
                             android:layout_weight="1"
                             android:text="mph"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
+                    </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/imageViewSpeedDirection"
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:src="@drawable/equal32" />
+                    <ImageView
+                        android:id="@+id/imageViewSpeedDirection"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:src="@drawable/equal32" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/imageViewSpeedDirection" >
 
                         <EditText
                             android:id="@+id/editTextSpeed2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ems="6"
+                            android:layout_weight="1"
+                            android:ems="4"
                             android:inputType="numberDecimal" />
 
                         <TextView
@@ -106,7 +119,9 @@
                             android:text="km/h"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
                     </LinearLayout>
+
                 </RelativeLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -145,18 +160,20 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
-                        android:id="@+id/LinearLayout01"
+                        android:id="@+id/linearLayout1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/ImageView01" >
 
                         <EditText
                             android:id="@+id/EditTextFuelCost1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ems="6"
+                            android:layout_weight="1"
+                            android:ems="3"
                             android:inputType="numberDecimal"
-                            android:text="4" >
-                        </EditText>
+                            android:text="4" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -164,20 +181,30 @@
                             android:layout_weight="1"
                             android:text="$/Gallon"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
+                    </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/ImageView01"
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:src="@drawable/equal32" />
+                    <ImageView
+                        android:id="@+id/ImageView01"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:src="@drawable/equal32" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/linearLayout1"
+                        android:layout_toRightOf="@+id/ImageView01" >
 
                         <EditText
                             android:id="@+id/EditTextFuelCost2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ems="6"
+                            android:layout_weight="1"
+                            android:ems="3"
                             android:inputType="numberDecimal" />
 
                         <TextView
@@ -188,6 +215,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
                     </LinearLayout>
                 </RelativeLayout>
+
             </LinearLayout>
 
             <LinearLayout

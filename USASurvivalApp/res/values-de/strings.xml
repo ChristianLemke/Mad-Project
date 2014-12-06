@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">USA Survival App</string>
+    <string name="title_store">Einkaufen</string>
+    <string name="title_ontheroad">Auf der Straße</string>
+    <string name="title_restaurant">Restaurant</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="string_currencyconverter">Währungsrechner</string>
+    <string name="string_liquidconverter">Flüssigkeitsrechner</string>
+    <string name="string_weightconverter">Gewichtsrechner</string>
+    <string name="string_sizeconverter">Größenrechner</string>
+    <string name="string_size_gender">Geschlecht</string>
+    <string name="string_size_type">Kleidungsart</string>
+    <string name="string_size_women">Damen</string>
+    <string name="string_size_men">Herren</string>
+    <string name="string_size_clothes">Kleidung</string>
+    <string name="string_size_shoes">Schuhe</string>
+    <string name="string_size_us">amerikanisch</string>
+    <string name="string_size_ger">deutsch</string>
+    <string name="string_tipcalculator">Trinkgeldrechner</string>
+    <string name="string_tips">Trinkgeld:</string>
+    <string name="string_total">Gesamt:</string>
+    <string name="string_update">aktualisiert Wechselkurs...</string>
+    <string name="string_updateerror">Fehler: Konnte Wechselkurs nicht aktualisieren!</string>
+    <string name="speed_converter">Geschwindigkeitsrechner</string>
+    <string name="fuel_cost_calculator">Benzinkostenrechner</string>
+    <string name="gasstation_finder">Tankstellen finder</string>
+    <string name="fuel_type">Benzin Art</string>
+    <string name="sort_by">Sortieren nach</string>
+    <string name="distance">Entfernung</string>
+    <string name="price">Kosten</string>
+    <string name="distance_miles_">"Entfernung(Meilen): "</string>
+    <string name="compass">Kompass</string>
+    <string name="loading_">lade...</string>
+    <string name="where_i_am">Wo bin ich</string>
+    <string name="address">Addresse</string>
+    <string name="station">Station</string>
+    <string name="searching_gas_stations_">Suche Tankstellen...</string>
+    <string name="gas_station">Tankstelle</string>
+    <string name="hey_my_current_address_is_">Hey meinen aktueller Standort\n</string>
+    <string name="my_address">Meine Addresse</string>
+    <string name="share_it_using_">Teile es mit...</string>
+    <string name="waiting_for_location">Warte auf Standort</string>
+    <string name="string_description"> Die USA Survival App ist ein uebersichtlich
+
+         und intuitiv gestalteter Helfer fuer Besucher der Vereinigten Staaten von Amerika. 
+Sie ist aufgeteilt in typische Alltagssituationen. Um die App einfach zu halten werden vorallem 
+die wichtigsten Faelle unterstuetzt. In erster Linie ist sie eine Hilfe fuer europaeische (deutsche) Besucher.</string>
+
+</resources>
