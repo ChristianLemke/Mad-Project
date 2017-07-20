@@ -1,7 +1,7 @@
 # Mad-Project
-Android app for turists.
+Android app for tourists.
 A Team-Project.
 
 - Exchange rate calculator
-- gas cost calculator
+- Gas cost calculator
 - ...
